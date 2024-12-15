@@ -1,0 +1,120 @@
+# Create the database
+CREATE DATABASE Zomato;
+USE Zomato;
+# Create the Restaurants table
+CREATE TABLE Restaurants (
+    Restaurant_ID INT PRIMARY KEY IDENTITY(1,1),
+    Restaurant_Name VARCHAR(100),
+    City VARCHAR(50),
+    Cuisine VARCHAR(50),
+    Average_Cost DECIMAL(10, 2),
+    Rating DECIMAL(2, 1),
+    Online_Delivery VARCHAR(10),
+    Table_Booking VARCHAR(10)
+);
+
+# Create the Orders table
+CREATE TABLE Orders (
+    Order_ID INT PRIMARY KEY IDENTITY(1,1),
+    Restaurant_ID INT,
+    Customer_Name VARCHAR(100),
+    Order_Date DATE,
+    Order_Amount DECIMAL(10, 2),
+    Delivery_Status VARCHAR(20),
+    FOREIGN KEY (Restaurant_ID) REFERENCES Restaurants(Restaurant_ID)
+);
+
+# Insert sample data into Restaurants table
+INSERT INTO Restaurants (Restaurant_Name, City, Cuisine, Average_Cost, Rating, Online_Delivery, Table_Booking)
+VALUES
+('The Spice Lab', 'Mumbai', 'Indian', 800, 4.5, 'Yes', 'No'),
+('Sushi World', 'Bangalore', 'Japanese', 1200, 4.8, 'Yes', 'Yes'),
+('Pasta Paradise', 'Delhi', 'Italian', 700, 4.2, 'No', 'Yes'),
+('Burger Hub', 'Pune', 'American', 500, 3.9, 'Yes', 'No'),
+('Tandoori Treats', 'Mumbai', 'Indian', 900, 4.6, 'No', 'Yes'),
+('Grill Station', 'Chennai', 'Barbecue', 950, 4.3, 'Yes', 'No'),
+('Dessert Delights', 'Kolkata', 'Desserts', 400, 4.7, 'No', 'Yes'),
+('Noodle House', 'Hyderabad', 'Chinese', 600, 4.1, 'Yes', 'No'),
+('Curry Corner', 'Delhi', 'Indian', 850, 4.4, 'Yes', 'Yes'),
+('Urban Tadka', 'Mumbai', 'Fusion', 1000, 4.6, 'Yes', 'Yes'),
+('Pizza Plaza', 'Ahmedabad', 'Italian', 750, 4.2, 'No', 'Yes'),
+('Biryani House', 'Lucknow', 'Indian', 650, 4.8, 'Yes', 'No'),
+('Seafood Shack', 'Goa', 'Seafood', 1200, 4.9, 'No', 'Yes'),
+('The Veggie Table', 'Chandigarh', 'Vegetarian', 500, 4.5, 'Yes', 'No'),
+('Street Eats', 'Jaipur', 'Street Food', 300, 4.0, 'Yes', 'No'),
+('Gourmet Grill', 'Mumbai', 'Continental', 1100, 4.6, 'Yes', 'Yes'),
+('Soulful Soups', 'Pune', 'Healthy', 550, 4.3, 'No', 'Yes'),
+('Kebab Nation', 'Delhi', 'Indian', 800, 4.4, 'Yes', 'Yes'),
+('Royal Feast', 'Bangalore', 'Mughlai', 1300, 4.7, 'No', 'Yes'),
+('Bistro Bliss', 'Hyderabad', 'French', 1500, 4.8, 'Yes', 'Yes'),
+('Taco Fiesta', 'Chennai', 'Mexican', 900, 4.5, 'Yes', 'No'),
+('Breakfast Barn', 'Kolkata', 'Breakfast', 400, 4.1, 'No', 'Yes'),
+('Café Mocha', 'Mumbai', 'Cafe', 600, 4.2, 'Yes', 'No'),
+('Sushi Samba', 'Pune', 'Japanese', 1400, 4.9, 'Yes', 'Yes'),
+('Flavors of India', 'Delhi', 'Indian', 850, 4.6, 'No', 'Yes'),
+('Taste of Italy', 'Bangalore', 'Italian', 950, 4.3, 'Yes', 'No'),
+('Urban Thai', 'Hyderabad', 'Thai', 1100, 4.7, 'Yes', 'Yes'),
+('BBQ Junction', 'Chennai', 'Barbecue', 1000, 4.5, 'No', 'Yes'),
+('Fusion Feast', 'Kolkata', 'Fusion', 1200, 4.4, 'Yes', 'No'),
+('Burger Bliss', 'Mumbai', 'American', 500, 4.0, 'Yes', 'No'),
+('Seafood Symphony', 'Goa', 'Seafood', 1300, 4.8, 'No', 'Yes'),
+('Noodle Nirvana', 'Ahmedabad', 'Chinese', 700, 4.3, 'Yes', 'Yes'),
+('Curry Tales', 'Chandigarh', 'Indian', 900, 4.2, 'No', 'No'),
+('Dessert Dreams', 'Jaipur', 'Desserts', 450, 4.6, 'Yes', 'Yes'),
+('Healthy Harvest', 'Lucknow', 'Healthy', 600, 4.5, 'No', 'No'),
+('Veggie Villa', 'Chandigarh', 'Vegetarian', 550, 4.4, 'Yes', 'Yes'),
+('Grill Gurus', 'Pune', 'Barbecue', 800, 4.3, 'No', 'Yes'),
+('Royal Kitchen', 'Delhi', 'Mughlai', 1200, 4.7, 'Yes', 'Yes'),
+('Cafe Delight', 'Mumbai', 'Cafe', 700, 4.1, 'No', 'No'),
+('Bistro Bites', 'Bangalore', 'French', 900, 4.4, 'Yes', 'Yes'),
+('Pizza Point', 'Kolkata', 'Italian', 750, 4.0, 'Yes', 'No'),
+('Spice Street', 'Mumbai', 'Indian', 950, 4.3, 'No', 'Yes'),
+('Urban Cuisine', 'Ahmedabad', 'Fusion', 1100, 4.5, 'Yes', 'Yes');
+
+
+# Insert sample data into Orders table
+INSERT INTO Orders (Restaurant_ID, Customer_Name, Order_Date, Order_Amount, Delivery_Status)
+VALUES
+(1, 'John Doe', '2024-12-10', 800, 'Delivered'),
+(2, 'Jane Smith', '2024-12-11', 1200, 'Delivered'),
+(3, 'Amit Kumar', '2024-12-12', 700, 'Pending'),
+(4, 'Sara Ali', '2024-12-13', 500, 'Delivered'),
+(5, 'Rahul Mehta', '2024-12-14', 900, 'Cancelled'),
+(6, 'Rita Shah', '2024-12-10', 950, 'Delivered'),
+(7, 'Mohan Das', '2024-12-11', 400, 'Delivered'),
+(8, 'Sneha Patil', '2024-12-12', 600, 'Pending'),
+(9, 'Akash Sen', '2024-12-13', 850, 'Delivered'),
+(10, 'Priya Nair', '2024-12-14', 1000, 'Delivered'),
+(11, 'Vikas Yadav', '2024-12-10', 750, 'Pending'),
+(12, 'Nina Roy', '2024-12-11', 650, 'Cancelled'),
+(13, 'Sahil Khan', '2024-12-12', 1200, 'Delivered'),
+(14, 'Aarti Gupta', '2024-12-13', 500, 'Delivered'),
+(15, 'Rajiv Sinha', '2024-12-14', 550, 'Pending'),
+(16, 'Meera Sharma', '2024-12-10', 850, 'Delivered'),
+(17, 'Karan Bedi', '2024-12-11', 1300, 'Cancelled'),
+(18, 'Preeti Kaur', '2024-12-12', 700, 'Delivered'),
+(19, 'Rahul Chauhan', '2024-12-13', 950, 'Pending'),
+(20, 'Sunil Verma', '2024-12-14', 1100, 'Delivered'),
+(21, 'Anjali Seth', '2024-12-10', 400, 'Pending'),
+(22, 'Aman Roy', '2024-12-11', 750, 'Delivered'),
+(23, 'Kavita Joshi', '2024-12-12', 900, 'Cancelled'),
+(24, 'Rohan Kapoor', '2024-12-13', 650, 'Delivered'),
+(25, 'Snehal Patil', '2024-12-14', 800, 'Pending'),
+(26, 'Divya Mishra', '2024-12-10', 1100, 'Delivered'),
+(27, 'Arjun Reddy', '2024-12-11', 950, 'Cancelled'),
+(28, 'Pooja Shah', '2024-12-12', 1200, 'Delivered'),
+(29, 'Tarun Gupta', '2024-12-13', 500, 'Delivered'),
+(30, 'Neha Singhal', '2024-12-14', 450, 'Pending'),
+(31, 'Manish Yadav', '2024-12-10', 700, 'Delivered'),
+(32, 'Ankita Jain', '2024-12-11', 850, 'Cancelled'),
+(33, 'Vivek Mehta', '2024-12-12', 600, 'Delivered'),
+(34, 'Priyanka Rao', '2024-12-13', 950, 'Pending'),
+(35, 'Sanjay Bhatia', '2024-12-14', 1100, 'Delivered'),
+(36, 'Shweta Pandey', '2024-12-10', 400, 'Cancelled'),
+(37, 'Vikram Singh', '2024-12-11', 750, 'Pending'),
+(38, 'Niharika Verma', '2024-12-12', 900, 'Delivered'),
+(39, 'Aditya Sharma', '2024-12-13', 650, 'Cancelled'),
+(40, 'Krishna Nair', '2024-12-14', 850, 'Delivered'),
+(41, 'Aarti Menon', '2024-12-10', 500, 'Pending'),
+(42, 'Ramesh Iyer', '2024-12-11', 450, 'Delivered'),
+(43, 'Swati Kulkarni', '2024-12-12', 1200, 'Delivered');
